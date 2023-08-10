@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac toe</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: darkolivegreen;
+      }
+      h1,
+      h3 {
+        text-align: center;
+        color: white;
+        margin: 20px;
+      }
+      #inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 10%;
+      }
+      #row-1,
+      #row-2,
+      #row-3 {
+        display: flex;
+        justify-content: center;
+      }
+      .btn {
+        width: 60px;
+        height: 60px;
+        margin: 1px;
+        color: rgb(255, 255, 255);
+        font-size: x-large;
+        cursor: pointer;
+      }
+      #result,
+      #reset-btn {
+        visibility: hidden;
+      }
+      #reset {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      #reset-btn {
+        cursor: pointer;
+        padding: 12px;
+        border-radius: 10px;
+        font-size: initial;
+        font-weight: 600;
+        color: darkolivegreen;
+      }
+      #reset-btn:hover {
+        background-color: black;
+        color: white;
+        transition: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <h3 id="turn"></h3>
+    <div id="inputs">
+      <div id="row-1">
+        <button id="btn1" class="btn" onclick="turn('btn1')"></button>
+        <button id="btn2" class="btn" onclick="turn('btn2')"></button>
+        <button id="btn3" class="btn" onclick="turn('btn3')"></button>
+      </div>
+      <div id="row-2">
+        <button id="btn4" class="btn" onclick="turn('btn4')"></button>
+        <button id="btn5" class="btn" onclick="turn('btn5')"></button>
+        <button id="btn6" class="btn" onclick="turn('btn6')"></button>
+      </div>
+      <div id="row-3">
+        <button id="btn7" class="btn" onclick="turn('btn7')"></button>
+        <button id="btn8" class="btn" onclick="turn('btn8')"></button>
+        <button id="btn9" class="btn" onclick="turn('btn9')"></button>
+      </div>
+    </div>
+    <h3 id="result"></h3>
+    <div id="reset">
+      <button id="reset-btn" onclick="reset()">Reset</button>
+    </div>
+    <script>
+      var play = "Turn X";
+
+      document.getElementById("turn").innerHTML = "Turn X";
+
+      function turn(id) {
+        if (play === "Turn X") {
+          document.getElementById(id).innerHTML = "x";
+          document.getElementById(id).disabled = true;
+          document.getElementById("turn").innerHTML = "Turn O";
+          play = "Turn O";
+          winner();
+        } else if (play === "Turn O") {
+          document.getElementById(id).innerHTML = "o";
+          document.getElementById(id).disabled = true;
+          document.getElementById("turn").innerHTML = "Turn X";
+          play = "Turn X";
+          winner();
+        }
+      }
+
+      function winner() {
+        var btn1 = document.getElementById("btn1").innerHTML;
+        var btn2 = document.getElementById("btn2").innerHTML;
+        var btn3 = document.getElementById("btn3").innerHTML;
+        var btn4 = document.getElementById("btn4").innerHTML;
+        var btn5 = document.getElementById("btn5").innerHTML;
+        var btn6 = document.getElementById("btn6").innerHTML;
+        var btn7 = document.getElementById("btn7").innerHTML;
+        var btn8 = document.getElementById("btn8").innerHTML;
+        var btn9 = document.getElementById("btn9").innerHTML;
+
+        if (btn1 === "x" && btn2 === "x" && btn3 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn4 === "x" && btn5 === "x" && btn6 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn7 === "x" && btn8 === "x" && btn9 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn1 === "x" && btn4 === "x" && btn7 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn2 === "x" && btn5 === "x" && btn8 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn3 === "x" && btn6 === "x" && btn9 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn1 === "x" && btn5 === "x" && btn9 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn3 === "x" && btn5 === "x" && btn7 === "x") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn1 === "o" && btn2 === "o" && btn3 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "X WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn4 === "o" && btn5 === "o" && btn6 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn7 === "o" && btn8 === "o" && btn9 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON!";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn1 === "o" && btn4 === "o" && btn7 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn2 === "o" && btn5 === "o" && btn8 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn3 === "o" && btn6 === "o" && btn9 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn1 === "o" && btn5 === "o" && btn9 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (btn3 === "o" && btn5 === "o" && btn7 === "o") {
+          disable();
+          document.getElementById("result").innerHTML = "O WON";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        } else if (
+          (btn1 == "x" || btn1 == "o") &&
+          (btn2 == "x" || btn2 == "o") &&
+          (btn3 == "x" || btn3 == "o") &&
+          (btn4 == "x" || btn4 == "o") &&
+          (btn5 == "x" || btn5 == "o") &&
+          (btn6 == "x" || btn6 == "o") &&
+          (btn7 == "x" || btn7 == "o") &&
+          (btn8 == "x" || btn8 == "o")
+        ) {
+          disable();
+          document.getElementById("result").innerHTML = "Match Draw";
+          document.getElementById("result").style.visibility = "visible";
+          document.getElementById("reset-btn").style.visibility = "visible";
+        }
+      }
+
+      function disable() {
+        for (var i = 1; i < 10; i++) {
+          var id = "btn" + i;
+          document.getElementById(id).disabled = true;
+        }
+        document.getElementById('result').style.visibility="visible";
+        document.getElementById('reset-btn').style.visibility="visible";
+      }
+      function reset() {
+        for (var i = 1; i < 10; i++) {
+          var id = "btn" + i;
+          document.getElementById(id).disabled = false;
+          document.getElementById(id).innerHTML="";
+        }
+        play="Turn X"
+        document.getElementById("turn").innerHTML=play;
+        document.getElementById('result').style.visibility="hidden";
+        document.getElementById('reset-btn').style.visibility="hidden";
+      }
+    </script>
+  </body>
+</html>
